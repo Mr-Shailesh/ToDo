@@ -7,6 +7,8 @@ const ToDo = () => {
   const [toggle, setToggle] = useState(true);
   const [edit, setEdit] = useState();
 
+  console.log(items)
+
   useEffect(() => {
     localStorage.setItem("todo", JSON.stringify(items));
   }, [items]);
@@ -32,6 +34,7 @@ const ToDo = () => {
       setData("");
     }
   };
+
   const removeHandler = (index) => {
     const updatedItems = items.filter((item) => {
       return index !== item.id;
@@ -88,6 +91,7 @@ const ToDo = () => {
             )}
           </div>
           <div className="showItems">
+
             {items.map((item) => {
               return (
                 <div className="eachItem" key={item.id}>
@@ -107,6 +111,7 @@ const ToDo = () => {
                 </div>
               );
             })}
+
           </div>
           <div className="showItems">
             <button
