@@ -8,8 +8,7 @@ const ToDo = () => {
   const [edit, setEdit] = useState();
 
   const itemsLength = items ? items.length : 0;
-  console.log(items)
-
+  
   useEffect(() => {
     localStorage.setItem("todo", JSON.stringify(items));
   }, [items]);
