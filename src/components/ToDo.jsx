@@ -3,12 +3,12 @@ import todo from "../Images/Todo.png";
 
 const ToDo = () => {
   const [data, setData] = useState("");
-  const [items, setItems] = useState(JSON.parse(localStorage.getItem("todo")));
+  const [items, setItems] = useState([]);
   const [toggle, setToggle] = useState(true);
   const [edit, setEdit] = useState();
 
   const itemsLength = items ? items.length : 0;
-  
+
   useEffect(() => {
     localStorage.setItem("todo", JSON.stringify(items));
   }, [items]);
@@ -91,27 +91,26 @@ const ToDo = () => {
             )}
           </div>
           <div className="showItems">
-
-            {itemsLength && items.map((item) => {
-              return (
-                <div className="eachItem" key={item.id}>
-                  <h3>{item.name}</h3>
-                  <div className="todo-btn">
-                    <i
-                      className="far fa-edit add-btn"
-                      title="Edit Items"
-                      onClick={() => editHandler(item.id)}
-                    />
-                    <i
-                      className="far fa-trash-alt add-btn"
-                      title="Delete Items"
-                      onClick={() => removeHandler(item.id)}
-                    />
+            {itemsLength &&
+              items.map((item) => {
+                return (
+                  <div className="eachItem" key={item.id}>
+                    <h3>{item.name}</h3>
+                    <div className="todo-btn">
+                      <i
+                        className="far fa-edit add-btn"
+                        title="Edit Items"
+                        onClick={() => editHandler(item.id)}
+                      />
+                      <i
+                        className="far fa-trash-alt add-btn"
+                        title="Delete Items"
+                        onClick={() => removeHandler(item.id)}
+                      />
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-
+                );
+              })}
           </div>
           <div className="showItems">
             <button
