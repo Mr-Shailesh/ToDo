@@ -7,6 +7,7 @@ const ToDo = () => {
   const [toggle, setToggle] = useState(true);
   const [edit, setEdit] = useState();
 
+  const itemsLength = items ? items.length : 0;
   console.log(items)
 
   useEffect(() => {
@@ -92,7 +93,7 @@ const ToDo = () => {
           </div>
           <div className="showItems">
 
-            {items.map((item) => {
+            {itemsLength && items.map((item) => {
               return (
                 <div className="eachItem" key={item.id}>
                   <h3>{item.name}</h3>
